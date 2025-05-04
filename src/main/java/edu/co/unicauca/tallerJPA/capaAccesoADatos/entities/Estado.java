@@ -2,7 +2,6 @@ package edu.co.unicauca.tallerJPA.capaAccesoADatos.entities;
 
 import java.util.Date;
 
-import org.hibernate.annotations.CascadeType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -30,6 +30,7 @@ public class Estado {
     private Date fechaRegistroEstado;
 
     @OneToOne
+    @MapsId
     @JoinColumn(name = "idfkFormatoa", referencedColumnName = "idFormatoA", unique = true)
     private FormatoA objFormatoA;
 }
