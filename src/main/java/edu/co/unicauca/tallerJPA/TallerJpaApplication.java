@@ -106,7 +106,9 @@ public class TallerJpaApplication implements CommandLineRunner {
 		estado.setEstadoActual("EN_FORMULACION");
 		estado.setFechaRegistroEstado(new Date());
 
-		FormatoA formato = new FormatoppA("La cura del cancer", "Curar el cancer", "Curarlo bien", "pedro pica piedra", "Rolando Casas", "ruta/carta");
+		FormatoA formato = new FormatoppA("La cura del cancer", "Curar el cancer usando metodos melos", "usar metodos;curar bien;revisar", "pedro pica piedra", "104612345678", "Rolando Casas", "ruta/carta");
+
+		formato.setFechaCreacion(new Date());
 
 		//FormatoA formato = new FormatotiA("La cura del cancer", "Curar el cancer", "Curarlo bien", "pedro", "paco");
 
@@ -237,6 +239,7 @@ public class TallerJpaApplication implements CommandLineRunner {
 			System.out.println("Formato A: ");
 			System.out.println("\tID: " + observacion.getObjEvaluacion().getObjFormatoA().getIdFormatoA());
 			System.out.println("\tTitulo: " + observacion.getObjEvaluacion().getObjFormatoA().getTitulo());
+			System.out.println("\tCodigo docente " + observacion.getObjEvaluacion().getObjFormatoA().getCodigoEstudiante1());
 			System.out.println("\tObjetivo General: " + observacion.getObjEvaluacion().getObjFormatoA().getObjDocente().getNombresDocente() + " " + observacion.getObjEvaluacion().getObjFormatoA().getObjetivoGeneral());
 			System.out.println("\tEstado: " + observacion.getObjEvaluacion().getObjFormatoA().getObjEstado().getEstadoActual());
 			System.out.println("\tFecha de registro: " + observacion.getObjEvaluacion().getObjFormatoA().getObjEstado().getFechaRegistroEstado());

@@ -1,9 +1,11 @@
 package edu.co.unicauca.tallerJPA.capaAccesoADatos.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = jakarta.persistence.InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_formato")
 @Setter
 @Getter
 @Table(name = "FormatosA")
@@ -36,6 +39,10 @@ public abstract class FormatoA {
     private String objetivosEspecificos;
     @Column(name = "nombre_estudiante1", length = 100)
     private String nombreEstudiante1;
+    @Column(name = "codigo_estudiante1", length = 100)
+    private String codigoEstudiante1;
+    @Column(name = "fecha_creacion")
+    private Date fechaCreacion;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = { jakarta.persistence.CascadeType.PERSIST, jakarta.persistence.CascadeType.MERGE })
     @JoinColumn(name = "idfkDocente")
@@ -52,11 +59,12 @@ public abstract class FormatoA {
     }
     
 
-    public FormatoA(String titulo, String objetivo_general, String objetivos_especifico, String nombre_estudiante1) {
+    public FormatoA(String titulo, String objetivo_general, String objetivos_especifico, String nombre_estudiante1, String codigo_estudiante1) {
         this.titulo = titulo;
         this.objetivoGeneral = objetivo_general;
         this.objetivosEspecificos = objetivos_especifico;
         this.nombreEstudiante1 = nombre_estudiante1;
+        this.codigoEstudiante1 = codigo_estudiante1;
         this.evaluaciones = new ArrayList<Evaluacion>();
     }
 }
